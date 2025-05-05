@@ -1,8 +1,8 @@
 from hx711 import HX711
 from utime import sleep
 
-DOUT_PIN = 4
-SCK_PIN = 5
+DOUT_PIN = 10
+SCK_PIN = 9
 
 hx = HX711(d_out=DOUT_PIN, pd_sck=SCK_PIN)
 

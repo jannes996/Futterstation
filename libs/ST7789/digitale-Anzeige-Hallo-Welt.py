@@ -17,19 +17,19 @@ spi = SPI(1,
     baudrate=20000000,
     polarity=0,
     phase=0,
-    sck=Pin(18),
-    mosi=Pin(17),
+    sck=Pin(6),
+    mosi=Pin(7),
     miso=Pin(0))
 
 tft = st7789.ST7789(
     spi,
     240,
     320,
-    reset=Pin(5, Pin.OUT),
-    cs=Pin(15, Pin.OUT),
-    dc=Pin(4, Pin.OUT),
+    reset=Pin(21, Pin.OUT),
+    cs=Pin(5, Pin.OUT),
+    dc=Pin(8, Pin.OUT),
     backlight=Pin(0, Pin.OUT),
-    rotation=0)
+    rotation=2)
 
 # Ausgabe
 tft.text(font, "Hallo Welt", 30, 30, st7789.WHITE, st7789.BLACK)
