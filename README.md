@@ -1,19 +1,2 @@
-# Futterstation
- 
-HC-SR04
-TRIG Pin 12
-ECHO Pin 14
+Die Futterstation ist ein automatisiertes Fütterungssystem für Katzen, das Trockenfutter bis zu einem eingestellten Wert ausgibt. Die Futtermenge wird durch eine Waage unter der Futterschüssel erfasst, der Verbrauch in einer Datenbank gespeichert und über Node-RED visualisiert. Ein ESP32 steuert den Drehverschluss, der durch einen Servo betrieben wird. Der Füllprozess erfolgt manuell über Node-RED oder automatisch nach Gewicht des Napfinhaltes. Lokal wird der Füllstand über ein Display am Gehäuse angezeigt.
 
-HX711
-DT Pin 33
-SCK Pin 32
-
-MG996R
-PWM Pin 25
-Stromversorgung direkt über Netzteil
-
-ST7789
-CLK (SCL) Pin 18
-MOSI (SDA) Pin 23
-DC Pin 2
-RST Pin 4
