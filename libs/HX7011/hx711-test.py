@@ -6,8 +6,8 @@ SCK_PIN = 9 #weiß
 hx = HX711(DOUT_PIN, SCK_PIN)
 
 def rohwert_zu_gewicht(rohwert):
-    m = -0.0005912
-    b = -30.39
+    m = -0.0005259
+    b = -46.70
     gewicht = int(m * rohwert + b)
     return gewicht
 

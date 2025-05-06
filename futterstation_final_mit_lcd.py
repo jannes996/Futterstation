@@ -26,7 +26,11 @@ import st7789py as st7789
 import vga1_16x32 as font
 
 # Variabeln und PIN's definieren
+zielgewicht = 90
+daten_alt = 0
+
 # Servo MG996-R
+servo_trigger = 0
 servo_trigger = 0
 aktor_servo = PWM(Pin(4), freq=50) #gelb
 
@@ -65,8 +69,8 @@ tft.text(font, "Futterstation", 10, 50, st7789.WHITE, st7789.BLACK)
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 
-#wlan.connect("BZTG-IoT", "WerderBremen24")
-wlan.connect("FRITZ!Box 6660 Cable GR", "hupensohn")
+wlan.connect("BZTG-IoT", "WerderBremen24")
+#wlan.connect("FRITZ!Box 6660 Cable GR", "hupensohn")
 print("Verbinde mit dem WLAN...")
 tft.text(font, "Wifi verbindet..", 10, 100, st7789.WHITE, st7789.BLACK)
 
@@ -83,7 +87,10 @@ def recv_data(topic, msg):
     
     global servo_trigger
     servo_trigger = json_content.get('servo_trigger')
-
+    
+    global zielgewicht
+    zielgewicht = json_content.get('zielgewicht')
+    
 def send_data(topic, content):
     client.publish(topic, str(content))
     print("MQTT Nachricht gesendet:" , content)
@@ -98,10 +105,10 @@ def entfernung_zu_prozent(entfernung_cm):
         prozent = 99
     return prozent
 
-def rohwert_zu_gewicht(rohwert):
-    m = -0.0005912
-    b = -30.39
-    gewicht = int(m * rohwert + b)
+def rohwert_zu_gewicht(rohwert_waage):
+    m = -0.0005259
+    b = -46.70
+    gewicht = int(m * rohwert_waage + b)
     return gewicht
 
 def schieber_auf():
@@ -120,8 +127,8 @@ def fuettern():
         gewicht = rohwert_zu_gewicht(sensor_hx0711.read())
         print(f"Aktuelles Gewicht: {gewicht}")
 
-        if gewicht >= 90:
-            print("Zielgewicht erreicht")
+        if gewicht >= zielgewicht:
+            print(f"Zielgewicht ({zielgewicht}g) erreicht")
             break
 
         if time.time() - startzeit > 3:
@@ -138,6 +145,7 @@ client.set_callback(recv_data)
 
 client.connect()
 client.subscribe("futterstation/manuell")
+client.subscribe("futterstation/fuellmenge")
 print("MQTT verbunden!")
 tft.text(font, "MQTT verbunden", 10, 140, st7789.GREEN, st7789.BLACK)
 
@@ -152,9 +160,11 @@ while True:
             "gewicht_napf": gewicht,
             "fuellstand_behaelter": fuellstand,
             }
-    
-    send_data("futterstation/daten", ujson.dumps(daten))
-
+    if daten != daten_alt:
+        send_data("futterstation/daten", ujson.dumps(daten))
+        
+    daten_alt = daten
+            
     if gewicht < 10 or servo_trigger == "1":
         fuettern()
         servo_trigger = 0
