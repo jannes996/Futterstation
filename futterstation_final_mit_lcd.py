@@ -69,8 +69,7 @@ tft.text(font, "Futterstation", 10, 50, st7789.WHITE, st7789.BLACK)
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 
-#wlan.connect("BZTG-IoT", "WerderBremen24")
-wlan.connect("FRITZ!Box 6660 Cable GR", "hupensohn")
+wlan.connect("BZTG-IoT", "WerderBremen24")
 
 print("Verbinde mit dem WLAN...")
 tft.text(font, "Wifi verbindet..", 10, 100, st7789.WHITE, st7789.BLACK)
