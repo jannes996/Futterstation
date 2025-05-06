@@ -1,0 +1,975 @@
+[
+    {
+        "id": "7ee1efc5f4266e05",
+        "type": "tab",
+        "label": "Futterstation",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a06d2ed13e15ee0a",
+        "type": "tab",
+        "label": "Datenbankabfrage",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2613a4d4c6d5ef89",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#606060",
+                "baseFont": "Verdana,Verdana,Geneva,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#606060",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#606060",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#868686",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#606060",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "Verdana,Verdana,Geneva,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Futterstation",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD.MM.YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "65f879861659cc8a",
+        "type": "mqtt-broker",
+        "name": "Futterstation",
+        "broker": "localhost",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "2117d9d7d4603781",
+        "type": "ui_tab",
+        "name": "Futterstation",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "82722391a9165026",
+        "type": "ui_group",
+        "name": "Eingabe",
+        "tab": "2117d9d7d4603781",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "dafb781b986e7ad2",
+        "type": "MySQLdatabase",
+        "name": "FutterstationDB",
+        "host": "localhost",
+        "port": "3306",
+        "db": "Futterstation",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "9d18f3c6aa769898",
+        "type": "ui_group",
+        "name": "Statistik",
+        "tab": "2117d9d7d4603781",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2f700c8b1ca51ee1",
+        "type": "ui_group",
+        "name": "All-Time Verbrauch",
+        "tab": "2117d9d7d4603781",
+        "order": 3,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c92df976c192b7ee",
+        "type": "remote-config",
+        "name": "Futterstation",
+        "host": "localhost",
+        "protocol": "http",
+        "port": "1880",
+        "baseurl": "/ui",
+        "instancehash": "i6fpoe0hv23psmeqitzbkdddo54uuo4fmcfuzw1m12qxrg2tena7zp0ijbhr4m9x",
+        "server": "nodered04.remote-red.com",
+        "region": "de"
+    },
+    {
+        "id": "a50bdb7422199ae4",
+        "type": "ui_group",
+        "name": "Aktueller Füllstand",
+        "tab": "2117d9d7d4603781",
+        "order": 4,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "verbrauch_tab",
+        "type": "ui_tab",
+        "name": "Verbrauch",
+        "icon": "bar_chart",
+        "order": 2
+    },
+    {
+        "id": "verbrauch_group",
+        "type": "ui_group",
+        "name": "30 Tage Übersicht",
+        "tab": "verbrauch_tab",
+        "order": 1,
+        "disp": true,
+        "width": 12
+    },
+    {
+        "id": "401f9cbeb5b1644a",
+        "type": "ui_spacer",
+        "z": "7ee1efc5f4266e05",
+        "name": "spacer",
+        "group": "a50bdb7422199ae4",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "mqtt_button",
+        "type": "ui_button",
+        "z": "7ee1efc5f4266e05",
+        "name": "Manuelles Auffüllen",
+        "group": "82722391a9165026",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Manuelles Auffüllen",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"servo_trigger\":\"1\"}",
+        "payloadType": "json",
+        "topic": "futterstation/manuell",
+        "topicType": "str",
+        "x": 130,
+        "y": 320,
+        "wires": [
+            [
+                "mqtt_out"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_out",
+        "type": "mqtt out",
+        "z": "7ee1efc5f4266e05",
+        "name": "MQTT Publish",
+        "topic": "futterstation/manuell",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "65f879861659cc8a",
+        "x": 320,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "set_price_global",
+        "type": "function",
+        "z": "7ee1efc5f4266e05",
+        "name": "Set Preis global",
+        "func": "flow.set(\"preisProKg\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "mqtt_in_gewicht",
+        "type": "mqtt in",
+        "z": "7ee1efc5f4266e05",
+        "name": "MQTT Subscribe",
+        "topic": "futterstation/daten",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "65f879861659cc8a",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 100,
+        "y": 60,
+        "wires": [
+            [
+                "422080a1f0de8d7e",
+                "c85530f566996f3c"
+            ]
+        ]
+    },
+    {
+        "id": "422080a1f0de8d7e",
+        "type": "function",
+        "z": "7ee1efc5f4266e05",
+        "name": "Datenbankeintrag",
+        "func": "let aktuellesGewicht = parseFloat(msg.payload.gewicht_napf);\nlet aktuelleFuellmenge = parseInt(msg.payload.fuellstand_behaelter);\nlet vorherigesGewicht = context.get('letztesGewicht');\nlet verbrauch = 0;\nlet preis = 0;\n\n// Zeitstempel im Format für SQLite (YYYY-MM-DD HH:MM:SS)\nconst zeit = new Date();\nzeit.setHours(zeit.getHours() + 1);\nlet timestamp = zeit.toISOString().replace(\"T\", \" \").substring(0, 19);\n\n// Preis pro kg aus Flow-Kontext holen\nlet preisProKg = flow.get(\"preisProKg\") || 0;\n\nif (vorherigesGewicht === undefined) {\n    context.set('letztesGewicht', aktuellesGewicht);\n    return null;  // ersten Wert ignorieren\n}\n\n// Differenz berechnen = Verbrauch\nlet differenz = vorherigesGewicht - aktuellesGewicht;\n\nif (differenz > 0 && differenz < 500) {\n    verbrauch = differenz;\n    preis = (verbrauch / 1000) * preisProKg;\n    preis = parseFloat(preis.toFixed(4));  // auf 4 Nachkommastellen runden\n}\n\n// Aktuelles Gewicht speichern\ncontext.set('letztesGewicht', aktuellesGewicht);\n\nmsg.topic = \"INSERT INTO futterdaten (zeit, gewicht, fuellmenge, verbrauch, preis) VALUES (?, ?, ?, ?, ?)\";\nmsg.payload = [timestamp, aktuellesGewicht, aktuelleFuellmenge, verbrauch, preis];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 60,
+        "wires": [
+            [
+                "e04020a84b147361"
+            ]
+        ]
+    },
+    {
+        "id": "f2ddf1172f44ba0a",
+        "type": "remote-access",
+        "z": "7ee1efc5f4266e05",
+        "confignode": "c92df976c192b7ee",
+        "name": "",
+        "verbose": 0,
+        "x": 120,
+        "y": 660,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "c85530f566996f3c",
+        "type": "function",
+        "z": "7ee1efc5f4266e05",
+        "name": "Live-Daten",
+        "func": "let gewicht_napf = {\n    payload: msg.payload.gewicht_napf\n};\n\nlet fuellstand_behalter = {\n    payload: msg.payload.fuellstand_behaelter\n};\n\nreturn [gewicht_napf, fuellstand_behalter];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 180,
+        "wires": [
+            [
+                "71ea368731517507"
+            ],
+            [
+                "b2edcff21c6a3076"
+            ]
+        ]
+    },
+    {
+        "id": "71ea368731517507",
+        "type": "ui_gauge",
+        "z": "7ee1efc5f4266e05",
+        "name": "",
+        "group": "a50bdb7422199ae4",
+        "order": 2,
+        "width": "3",
+        "height": "3",
+        "gtype": "donut",
+        "title": "Napf",
+        "label": "Gramm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#e32400",
+            "#e6e600",
+            "#96d35f"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 450,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "b2edcff21c6a3076",
+        "type": "ui_gauge",
+        "z": "7ee1efc5f4266e05",
+        "name": "",
+        "group": "a50bdb7422199ae4",
+        "order": 1,
+        "width": "3",
+        "height": "3",
+        "gtype": "donut",
+        "title": "Behälter",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#e32400",
+            "#e6e600",
+            "#77bb41"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 460,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "1ac1fd9e01f73cb0",
+        "type": "ui_slider",
+        "z": "7ee1efc5f4266e05",
+        "name": "Preis pro kg",
+        "label": "",
+        "tooltip": "Wie viel kostet das Kilo Trockenfutter?",
+        "group": "82722391a9165026",
+        "order": 3,
+        "width": "0",
+        "height": "0",
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "10",
+        "step": "0.1",
+        "className": "",
+        "x": 110,
+        "y": 440,
+        "wires": [
+            [
+                "set_price_global"
+            ]
+        ]
+    },
+    {
+        "id": "7487e48a54912cda",
+        "type": "ui_text",
+        "z": "7ee1efc5f4266e05",
+        "group": "82722391a9165026",
+        "order": 2,
+        "width": "0",
+        "height": "0",
+        "name": "",
+        "label": "Preis pro kg (€)",
+        "format": "",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 120,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "2a9f3c9ccf98d8f0",
+        "type": "ui_slider",
+        "z": "7ee1efc5f4266e05",
+        "name": "Füllmenge",
+        "label": "",
+        "tooltip": "Wie viel Gramm Futter soll nachgefüllt werden, sobald er leer ist?",
+        "group": "82722391a9165026",
+        "order": 6,
+        "width": "0",
+        "height": "0",
+        "passthru": true,
+        "outs": "end",
+        "topic": "payload",
+        "topicType": "msg",
+        "min": "20",
+        "max": "90",
+        "step": 1,
+        "className": "",
+        "x": 110,
+        "y": 580,
+        "wires": [
+            [
+                "e236db4f52e7ce9b"
+            ]
+        ]
+    },
+    {
+        "id": "e17e282a209a5aea",
+        "type": "ui_text",
+        "z": "7ee1efc5f4266e05",
+        "group": "82722391a9165026",
+        "order": 5,
+        "width": "0",
+        "height": "0",
+        "name": "",
+        "label": "Napfmenge beim Auffüllen (g)",
+        "format": "",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 170,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "2d152c926bb0793d",
+        "type": "mqtt out",
+        "z": "7ee1efc5f4266e05",
+        "name": "MQTT Publish",
+        "topic": "futterstation/fuellmenge",
+        "qos": "0",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "65f879861659cc8a",
+        "x": 420,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "e236db4f52e7ce9b",
+        "type": "template",
+        "z": "7ee1efc5f4266e05",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{ \"zielgewicht\": {{payload}} }",
+        "output": "str",
+        "x": 260,
+        "y": 580,
+        "wires": [
+            [
+                "2d152c926bb0793d"
+            ]
+        ]
+    },
+    {
+        "id": "e04020a84b147361",
+        "type": "mysql",
+        "z": "7ee1efc5f4266e05",
+        "mydb": "dafb781b986e7ad2",
+        "name": "",
+        "x": 520,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f3a364bebe1f43f4",
+        "type": "inject",
+        "z": "a06d2ed13e15ee0a",
+        "name": "Alle 10min",
+        "props": [],
+        "repeat": "600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "",
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "9321724d60f2df7b"
+            ]
+        ]
+    },
+    {
+        "id": "9321724d60f2df7b",
+        "type": "function",
+        "z": "a06d2ed13e15ee0a",
+        "name": "SQL-Abfrage erstellen",
+        "func": "msg.topic = `\n    SELECT\n        SUM(CASE WHEN DATE(zeit) = CURDATE() THEN verbrauch ELSE 0 END) AS heute_gramm,\n        SUM(CASE WHEN DATE(zeit) = CURDATE() THEN preis ELSE 0 END) AS heute_preis,\n        SUM(CASE WHEN YEARWEEK(zeit, 1) = YEARWEEK(NOW(), 1) THEN verbrauch ELSE 0 END) AS woche_gramm,\n        SUM(CASE WHEN YEARWEEK(zeit, 1) = YEARWEEK(NOW(), 1) THEN preis ELSE 0 END) AS woche_preis,\n        SUM(CASE WHEN YEAR(zeit) = YEAR(NOW()) AND MONTH(zeit) = MONTH(NOW()) THEN verbrauch ELSE 0 END) AS monat_gramm,\n        SUM(CASE WHEN YEAR(zeit) = YEAR(NOW()) AND MONTH(zeit) = MONTH(NOW()) THEN preis ELSE 0 END) AS monat_preis,\n        SUM(verbrauch) AS total_gramm,\n        SUM(preis) AS total_preis\n    FROM futterdaten\n`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 80,
+        "wires": [
+            [
+                "f0a01b1e4c89df65"
+            ]
+        ]
+    },
+    {
+        "id": "f0a01b1e4c89df65",
+        "type": "mysql",
+        "z": "a06d2ed13e15ee0a",
+        "mydb": "dafb781b986e7ad2",
+        "name": "Futterstation DB",
+        "x": 460,
+        "y": 160,
+        "wires": [
+            [
+                "bd5b31ff9538454c",
+                "verbrauch_format",
+                "de9415b3ad0ba1c1"
+            ]
+        ]
+    },
+    {
+        "id": "bd5b31ff9538454c",
+        "type": "function",
+        "z": "a06d2ed13e15ee0a",
+        "name": "Werte formatieren",
+        "func": "let row = msg.payload[0];\n\nlet ausgaben = [\n    { payload: `${row.heute_gramm.toFixed(0)} g (${row.heute_preis.toFixed(2)} €)` },\n    { payload: `${row.woche_gramm.toFixed(0)} g (${row.woche_preis.toFixed(2)} €)` },\n    { payload: `${row.monat_gramm.toFixed(0)} g (${row.monat_preis.toFixed(2)} €)` },\n    { payload: `${row.total_gramm.toFixed(0)} g (${row.total_preis.toFixed(2)} €)` }\n];\n\nreturn ausgaben;",
+        "outputs": 4,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 80,
+        "wires": [
+            [
+                "dd928bdfb0f3de15"
+            ],
+            [
+                "ba7801903e21a45e"
+            ],
+            [
+                "8c12e4e7393a7e09"
+            ],
+            [
+                "124a0a7d2417ebf1"
+            ]
+        ]
+    },
+    {
+        "id": "dd928bdfb0f3de15",
+        "type": "ui_text",
+        "z": "a06d2ed13e15ee0a",
+        "group": "9d18f3c6aa769898",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Heute",
+        "label": "Heute",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 810,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "ba7801903e21a45e",
+        "type": "ui_text",
+        "z": "a06d2ed13e15ee0a",
+        "group": "9d18f3c6aa769898",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Woche",
+        "label": "Woche",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 810,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "8c12e4e7393a7e09",
+        "type": "ui_text",
+        "z": "a06d2ed13e15ee0a",
+        "group": "9d18f3c6aa769898",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Monat",
+        "label": "Monat",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 810,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "124a0a7d2417ebf1",
+        "type": "ui_text",
+        "z": "a06d2ed13e15ee0a",
+        "group": "2f700c8b1ca51ee1",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "Gesamt",
+        "label": "Gesamt",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 820,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "verbrauch_inject",
+        "type": "inject",
+        "z": "a06d2ed13e15ee0a",
+        "name": "Alle 24h",
+        "props": [],
+        "repeat": "43200",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "10",
+        "topic": "",
+        "x": 100,
+        "y": 240,
+        "wires": [
+            [
+                "verbrauch_abfrage",
+                "1198bd07bf9079ba"
+            ]
+        ]
+    },
+    {
+        "id": "verbrauch_abfrage",
+        "type": "function",
+        "z": "a06d2ed13e15ee0a",
+        "name": "Verbrauch SQL",
+        "func": "msg.topic = `\n    SELECT DATE(zeit) AS tag, SUM(verbrauch) AS gramm\n    FROM futterdaten\n    WHERE zeit >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)\n    GROUP BY DATE(zeit)\n    ORDER BY tag ASC\n`; return msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 240,
+        "wires": [
+            [
+                "f0a01b1e4c89df65"
+            ]
+        ]
+    },
+    {
+        "id": "verbrauch_format",
+        "type": "function",
+        "z": "a06d2ed13e15ee0a",
+        "name": "Chart Format Verbrauch",
+        "func": "let labels = [];\nlet data = [];\n\nfor (let row of msg.payload) {\n    labels.push(row.tag);\n    data.push(row.gramm);\n}\n\nmsg.payload = [{\n    series: [\"Verbrauch\"],\n    data: [data],\n    labels: labels\n}];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 240,
+        "wires": [
+            [
+                "verbrauch_chart"
+            ]
+        ]
+    },
+    {
+        "id": "verbrauch_chart",
+        "type": "ui_chart",
+        "z": "a06d2ed13e15ee0a",
+        "name": "30-Tage Verbrauch",
+        "group": "verbrauch_group",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "label": "Verbrauch letzte 30 Tage (g)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "linear",
+        "nodata": "Noch keine Daten",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#97bbcd",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 830,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1198bd07bf9079ba",
+        "type": "function",
+        "z": "a06d2ed13e15ee0a",
+        "name": "Füllbehälter SQL",
+        "func": "msg.topic = `\n    SELECT DATE(zeit) AS tag, MAX(fuellmenge) AS fuellstand\n    FROM futterdaten\n    WHERE zeit >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)\n    GROUP BY DATE(zeit)\n    ORDER BY tag ASC;\n`; return msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 300,
+        "wires": [
+            [
+                "f0a01b1e4c89df65"
+            ]
+        ]
+    },
+    {
+        "id": "de9415b3ad0ba1c1",
+        "type": "function",
+        "z": "a06d2ed13e15ee0a",
+        "name": "Chart Format Füllbehälter",
+        "func": "let labels = [];\nlet data = [];\n\nfor (let row of msg.payload) {\n    labels.push(row.tag);\n    data.push(row.fuellstand);\n}\n\nmsg.payload = [{\n    series: [\"Füllstand\"],\n    data: [data],\n    labels: labels\n}];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 300,
+        "wires": [
+            [
+                "cd5b4dd81ad8190d"
+            ]
+        ]
+    },
+    {
+        "id": "cd5b4dd81ad8190d",
+        "type": "ui_chart",
+        "z": "a06d2ed13e15ee0a",
+        "name": "30-Tage Füllbehälter",
+        "group": "verbrauch_group",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "label": "Füllverhalten der letzten 30 Tage",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "linear",
+        "nodata": "Noch keine Daten",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#97bbcd",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 840,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "be05d170ae8b8c5e",
+        "type": "ui_button",
+        "z": "a06d2ed13e15ee0a",
+        "name": "",
+        "group": "verbrauch_group",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Daten aktualisieren",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 110,
+        "y": 380,
+        "wires": [
+            [
+                "verbrauch_abfrage",
+                "1198bd07bf9079ba"
+            ]
+        ]
+    }
+]
