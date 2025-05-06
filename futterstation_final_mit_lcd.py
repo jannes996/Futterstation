@@ -9,7 +9,7 @@
 # -ein Entfernungsmesser im Nachfüllbehälter um den Bestand zu messen
 # -ein Display zum darstellen von Informationen vor Ort
  
-# Ersteller: Jannes
+# Ersteller: Jannes Gonsior
 # Datum: 04.03.2025
 
 # Import der Libarys
