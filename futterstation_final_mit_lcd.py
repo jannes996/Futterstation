@@ -26,7 +26,7 @@ import st7789py as st7789
 import vga1_16x32 as font
 
 # Variabeln und PIN's definieren
-zielgewicht = 90 # Defaultwert für den Napf
+zielgewicht = 40 # Defaultwert für den Napf
 daten_alt = 0 # Vergleich zwischen den Daten zum Senden
 
 # Servo MG996-R
@@ -69,8 +69,8 @@ tft.text(font, "Futterstation", 10, 50, st7789.WHITE, st7789.BLACK)
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 
-wlan.connect("BZTG-IoT", "WerderBremen24")
-#wlan.connect("FRITZ!Box 6660 Cable GR", "hupensohn")
+#wlan.connect("BZTG-IoT", "WerderBremen24")
+wlan.connect("FRITZ!Box 6660 Cable GR", "hupensohn")
 
 print("Verbinde mit dem WLAN...")
 tft.text(font, "Wifi verbindet..", 10, 100, st7789.WHITE, st7789.BLACK)
@@ -155,6 +155,7 @@ tft.text(font, "MQTT verbunden", 10, 140, st7789.GREEN, st7789.BLACK)
 # Daten senden und empfangen
 while True:
     client.check_msg() # prüft ob eine neue MQTT-Nachricht vom Broker empfangen wurde und ruft die bei set_callback() eingegebene Funktion auf
+    time.sleep(5)
 
     gewicht = rohwert_zu_gewicht(sensor_hx0711.read()) # lineare Funktion
     fuellstand = entfernung_zu_prozent(sensor_hcsr04.distance_cm()) # lineare Funktion
@@ -177,5 +178,3 @@ while True:
     fuellstand_lcd = f"Behaelter: {fuellstand}%"
     tft.text(font, gewicht_lcd, 10, 200, st7789.WHITE, st7789.BLACK)
     tft.text(font, fuellstand_lcd, 10, 240, st7789.WHITE, st7789.BLACK)
-
-    time.sleep(5)
