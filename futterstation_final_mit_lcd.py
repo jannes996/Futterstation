@@ -88,8 +88,9 @@ def recv_data(topic, msg): # Funktion zum Empfangen von MQTT Nachrichten
     global servo_trigger # globae Variabel zum nutzen außerhalb der Funktion
     servo_trigger = json_content.get('servo_trigger')
     
-    global zielgewicht # globale Variabel zum nutzen außerhalb der Funktion
-    zielgewicht = json_content.get('zielgewicht')
+    if "zielgewicht" in json_content:
+        global zielgewicht # globale Variabel zum nutzen außerhalb der Funktion
+        zielgewicht = json_content.get('zielgewicht')
     
 def send_data(topic, content): # Funktion zum Senden von MQTT Nachrichten
     client.publish(topic, str(content))
