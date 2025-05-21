@@ -16,7 +16,7 @@
 import time
 import network
 import ujson
-from machine import Pin, SoftI2C, PWM, SPI
+from machine import Pin, PWM, SPI
 from umqtt.simple import MQTTClient
 
 # Bibliotheken der Sensoren
@@ -30,7 +30,6 @@ zielgewicht = 40 # Defaultwert für den Napf
 daten_alt = 0 # Vergleich zwischen den Daten zum Senden
 
 # Servo MG996-R
-servo_trigger = 0
 servo_trigger = 0
 aktor_servo = PWM(Pin(4), freq=50) #gelb
 
@@ -155,7 +154,7 @@ tft.text(font, "MQTT verbunden", 10, 140, st7789.GREEN, st7789.BLACK)
 # Daten senden und empfangen
 while True:
     client.check_msg() # prüft ob eine neue MQTT-Nachricht vom Broker empfangen wurde und ruft die bei set_callback() eingegebene Funktion auf
-    time.sleep(5)
+    time.sleep(2)
 
     gewicht = rohwert_zu_gewicht(sensor_hx0711.read()) # lineare Funktion
     fuellstand = entfernung_zu_prozent(sensor_hcsr04.distance_cm()) # lineare Funktion
